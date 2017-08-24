@@ -33,7 +33,8 @@ window.components.Post = {
 	</div>
 	<footer class="card-footer">
 	<span class="card-footer-item">
-		<like-dislike-button :init="postdata.like.state" @click="likeDislikeClick"></like-dislike-button>
+		<like-dislike-button :init="postdata.like.state" :score="postdata.like.score"
+		@click="likeDislikeClick"></like-dislike-button>
 	</span>	
 	</footer>
 </div>
@@ -66,6 +67,7 @@ window.components.Post = {
 	{
 		likeDislikeClick(state){
 			throw('implement me')
+
 		}
 	}
 

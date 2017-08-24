@@ -14,7 +14,11 @@ window.components.LikeDislikeButton = {
 				<span>Like</span>
 			</a>
 		</p>
-		
+		<p class="control">
+			<span class="button" >
+				{{score}}
+			</span>
+		</p>
 		<p class="control">
 			<a v-bind:class="dislikeButtonClass" @click="dislikeClick">
 				<span class="icon is-small">
@@ -26,7 +30,7 @@ window.components.LikeDislikeButton = {
 
 	</div>
 	`,
-	props:['init'],//initial state
+	props:['init','score'],//initial state
 	methods:{
 		likeClick(){
 			if(this.isLiked)
