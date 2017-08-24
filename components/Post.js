@@ -1,6 +1,7 @@
 if(window.components == null)
 	window.components = {}
-
+if(window.components.LikeDislikeButton == null )
+	throw "this component require LikeDislikeButton component"
 window.components.Post = {
 	template:`
 <div class="card">
@@ -22,7 +23,7 @@ window.components.Post = {
 	<div v-if="postdata.image" class="card-image">
 	<figure class="image is-4by3">
 		<img :src="postdata.image" alt="Image">
-	</figure>
+	</figure> 
 	</div>
 	<div class="card-content">
 	<div class="content" >
@@ -30,6 +31,11 @@ window.components.Post = {
 		<small>{{postdata.date}}</small>
 	</div>
 	</div>
+	<footer class="card-footer">
+	<span class="card-footer-item">
+		<like-dislike-button :init="postdata.like.state" @click="likeDislikeClick"></like-dislike-button>
+	</span>	
+	</footer>
 </div>
 	`,
 	props:['postdata'],
@@ -40,16 +46,27 @@ window.components.Post = {
 			id, username, firstName,
 			lastName , profileImageUrl
 		},
+		like:{
+			state, // wheather the curent user like/disliked this post before
+			score
+		}
 		image, // optional
 		date
 	}
 	*/
+	components:{
+		'like-dislike-button':window.components.LikeDislikeButton
+	},
 	computed:{
-		fullname()
-		{
+		fullname(){
 			return this.postdata.user.firstName + " "+this.postdata.user.lastName
 		}
-
+	},
+	methods:
+	{
+		likeDislikeClick(state){
+			throw('implement me')
+		}
 	}
 
 }
